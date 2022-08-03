@@ -1,9 +1,20 @@
-const express = require("express");
+const express = require('express');
+const paletes = require('./mocks/paletes');
+
 const port = 3000;
 const app = express();
+app.use(express.json());
 
-app.get("/", function (req, res) {
-    res.send("Hello World");
+app.get('/', function (req, res) {
+    res.send('Hello World');
+});
+app.get('/paletes/find-paletes', (req, res) => {
+    res.send(paletes);
+});
+app.get('/paletes/find-palete/:id', (req, res) => {
+    const idParam = Number(req.params.id);
+    const chosenPalete = paletes.find((palete) => palete.id === idParam);
+    res.send(chosenPalete);
 });
 
 app.listen(port, () => {
