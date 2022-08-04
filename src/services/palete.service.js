@@ -2,21 +2,25 @@ const paletes = require('../mocks/paletes');
 const PaletesEntity = require('../entities/Paletes.entity');
 const CoversAvailableEntity = require('../entities/CoversAvailable.entity');
 
-function findAllPaletes() {
+function findAllPaletesService() {
     return paletes;
 }
 
-function findPaleteById(id) {
+function findPaleteByIdService(id) {
     let paleteFinded;
     paletes.map((palete) => {
         if (palete.id == id) {
             paleteFinded = palete;
         }
     });
-    return paleteFinded;
+    if (paleteFinded) {
+        return paleteFinded;
+    } else {
+        return 'Nenhuma paleta foi encontrada';
+    }
 }
 
-function createPalete(palete) {
+function createPaleteService(palete) {
     const newPalete = new PaletesEntity(palete);
     newPalete.validatePalete();
 
@@ -43,9 +47,9 @@ function createPalete(palete) {
     return paleteValidated;
 }
 
-function updatePalete(palete) {
-    const updatePalete = new PaletesEntity(palete);
-    updatePalete.validatePalete();
+function updatePaleteService(palete) {
+    const updatePaleteService = new PaletesEntity(palete);
+    updatePaleteService.validatePalete();
     if (!palete.coversAvailable) {
         throw new Error('Coberturas precisam ser informadas');
     }
@@ -56,7 +60,7 @@ function updatePalete(palete) {
         listCovers.push(updatedCover.getCoversAvailable());
     });
     const updatedPalete = {
-        ...updatePalete.getPalete(),
+        ...updatePaleteService.getPalete(),
         coversAvailable: listCovers,
     };
 
@@ -68,7 +72,15 @@ function updatePalete(palete) {
     return updatedPalete;
 }
 
-const paletaCriada = createPalete({
+module.exports = {
+    findAllPaletesService,
+    findPaleteByIdService,
+    updatePaleteService,
+    createPaleteService,
+};
+
+/*
+const paletaCriada = createPaleteService({
     id: 2345678,
     flavor: 'Teste',
     description: 'description teste',
@@ -81,7 +93,7 @@ const paletaCriada = createPalete({
     ],
 });
 
-const paletaAtualizada = updatePalete({
+const paletaAtualizada = updatePaleteService({
     id: 2345678,
     flavor: 'Teste updated',
     description: 'description teste updated',
@@ -96,3 +108,4 @@ const paletaAtualizada = updatePalete({
 
 console.log(paletaCriada);
 console.log(paletaAtualizada);
+*/
