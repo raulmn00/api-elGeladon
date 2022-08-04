@@ -6,6 +6,17 @@ const paletes = [
             'Quam vulputate dignissim suspendisse in est ante in nibh mauris.',
         picture: 'assets/images/paleta-brigadeiro-cremoso.png',
         price: 10.0,
+        coversAvailable: [
+            {
+                name: 'chocolate',
+            },
+            {
+                name: 'strawberry',
+            },
+            {
+                name: 'condensed milk',
+            },
+        ],
     },
     {
         id: 2,
@@ -14,6 +25,17 @@ const paletes = [
             'Quam vulputate dignissim suspendisse in est ante in nibh mauris.',
         picture: 'assets/images/paleta-chocolate.png',
         price: 10.0,
+        coversAvailable: [
+            {
+                name: 'chocolate',
+            },
+            {
+                name: 'strawberry',
+            },
+            {
+                name: 'condensed milk',
+            },
+        ],
     },
     {
         id: 3,
@@ -22,6 +44,17 @@ const paletes = [
             'Quam vulputate dignissim suspendisse in est ante in nibh mauris.',
         picture: 'assets/images/paleta-leite.png',
         price: 7.0,
+        coversAvailable: [
+            {
+                name: 'chocolate',
+            },
+            {
+                name: 'strawberry',
+            },
+            {
+                name: 'condensed milk',
+            },
+        ],
     },
     {
         id: 4,
@@ -30,6 +63,17 @@ const paletes = [
             'Quam vulputate dignissim suspendisse in est ante in nibh mauris.',
         picture: 'assets/images/paleta-maracuja.png',
         price: 7.0,
+        coversAvailable: [
+            {
+                name: 'chocolate',
+            },
+            {
+                name: 'strawberry',
+            },
+            {
+                name: 'condensed milk',
+            },
+        ],
     },
 ];
 
