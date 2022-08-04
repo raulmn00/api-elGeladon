@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 class Paletes {
     constructor(palete) {
-        this.id = crypto.randomUUID();
+        this.id = palete.id ? palete.id : crypto.randomUUID();
         this.flavor = palete.flavor;
         this.description = palete.description;
         this.picture = palete.picture;

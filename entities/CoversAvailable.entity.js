@@ -2,7 +2,7 @@ const uuid = require('crypto');
 
 class CoversAvailable {
     constructor(cover) {
-        this.id = uuid.randomUUID();
+        this.id = cover.id ? cover.id : uuid.randomUUID();
         this.name = cover.name;
     }
 
