@@ -78,34 +78,3 @@ module.exports = {
     updatePaleteService,
     createPaleteService,
 };
-
-/*
-const paletaCriada = createPaleteService({
-    id: 2345678,
-    flavor: 'Teste',
-    description: 'description teste',
-    picture: './assets/images/teste.png',
-    price: 10,
-    coversAvailable: [
-        {
-            name: 'cobertura de teste',
-        },
-    ],
-});
-
-const paletaAtualizada = updatePaleteService({
-    id: 2345678,
-    flavor: 'Teste updated',
-    description: 'description teste updated',
-    picture: './assets/images/teste.png',
-    price: 10,
-    coversAvailable: [
-        {
-            name: 'cobertura de teste',
-        },
-    ],
-});
-
-console.log(paletaCriada);
-console.log(paletaAtualizada);
-*/
