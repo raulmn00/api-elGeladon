@@ -10,7 +10,29 @@ const findPaleteByIdController = (req, res) => {
     const chosenPalete = paleteServices.findPaleteByIdService(idParam);
     res.send(chosenPalete);
 };
+
+const updatePaleteController = (req, res) => {
+    const palete = req.body;
+    const paleteUpdated = paleteServices.updatePaleteService(palete);
+    res.send(paleteUpdated);
+};
+
+const createPaleteController = (req, res) => {
+    const palete = req.body;
+    const paleteCreated = paleteServices.createPaleteService(palete);
+    res.send(paleteCreated);
+};
+
+const deletePaleteController = (req, res) => {
+    const idPalete = req.params.id;
+    const deletedPalete = paleteServices.deletePaleteService(idPalete);
+    res.send(deletedPalete);
+};
+
 module.exports = {
     findAllPaletesController,
     findPaleteByIdController,
+    updatePaleteController,
+    createPaleteController,
+    deletePaleteController,
 };
