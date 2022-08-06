@@ -72,9 +72,21 @@ function updatePaleteService(palete) {
     return updatedPalete;
 }
 
+function deletePaleteService(id) {
+    let paleteDeleted;
+    paletes.map((palete, index) => {
+        if (palete.id == id) {
+            paleteDeleted = palete;
+            paletes.splice(index, 1);
+        }
+    });
+    return paleteDeleted;
+}
+
 module.exports = {
     findAllPaletesService,
     findPaleteByIdService,
     updatePaleteService,
     createPaleteService,
+    deletePaleteService,
 };
