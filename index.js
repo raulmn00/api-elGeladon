@@ -5,9 +5,12 @@ const Cover = require('./src/entities/CoversAvailable.entity');
 const routes = require('./src/routes/palete.route');
 const service = require('./src/services/palete.service');
 const controller = require('./src/controllers/palete.controller');
+const connectToDatabase = require('./src/database/database');
 
 const port = 3000;
 const app = express();
+
+connectToDatabase();
 
 app.use(express.json());
 app.use(cors());
