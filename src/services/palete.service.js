@@ -1,43 +1,21 @@
 //const paletes = require('../mocks/paletes');
 const PaletesEntity = require('../entities/Paletes.entity');
 const CoversAvailableEntity = require('../entities/CoversAvailable.entity');
-const Paletes = require('../models/Palete');
+const Palete = require('../models/Palete');
 
 async function findAllPaletesService() {
-    const paletes = await Paletes.find();
+    const paletes = await Palete.find();
     return paletes;
 }
 
 async function findPaleteByIdService(id) {
-    const paleteFinded = await Paletes.findById(id);
+    const paleteFinded = await Palete.findById(id);
     return paleteFinded;
 }
 
-function createPaleteService(palete) {
-    const newPalete = new PaletesEntity(palete);
-    newPalete.validatePalete();
-
-    if (!palete.coversAvailable) {
-        throw new Error('Precisa informar as coberturas.');
-    }
-
-    const listCovers = [];
-    palete.coversAvailable.map((cover) => {
-        const newCover = new CoversAvailableEntity(cover);
-        newCover.validateCover();
-        listCovers.push(newCover.getCoversAvailable());
-    });
-
-    const paleteValidated = {
-        ...newPalete.getPalete(),
-        coversAvailable: listCovers,
-    };
-    //console.log(paleteValidated);
-    paletes.push(paleteValidated);
-    //console.log(paleteValidated.coversAvailable);
-    //console.log(newPalete.getPalete());
-    //console.log(palete);
-    return paleteValidated;
+async function createPaleteService(newPalete) {
+    const paleteCreated = await Palete.create(newPalete);
+    return paleteCreated;
 }
 
 function updatePaleteService(palete) {

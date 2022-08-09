@@ -17,14 +17,27 @@ const findPaleteByIdController = async (req, res) => {
 
 const updatePaleteController = (req, res) => {
     const palete = req.body;
+    if (
+        !palete ||
+        !palete.flavor ||
+        !palete.description ||
+        !palete.picture ||
+        !palete.price
+    ) {
+        return res.status(400).send({
+            message:
+                'Você não preencheu todos os dados para adicionar uma nova paleta ao cardápio!',
+        });
+    }
     const paleteUpdated = paleteServices.updatePaleteService(palete);
     res.send(paleteUpdated);
 };
 
-const createPaleteController = (req, res) => {
+const createPaleteController = async (req, res) => {
     const palete = req.body;
-    const paleteCreated = paleteServices.createPaleteService(palete);
-    res.send(paleteCreated);
+    const paleteCreated = await paleteServices.createPaleteService(palete);
+
+    res.status(201).send(paleteCreated);
 };
 
 const deletePaleteController = (req, res) => {
