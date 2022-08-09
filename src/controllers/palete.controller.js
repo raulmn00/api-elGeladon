@@ -15,7 +15,7 @@ const findPaleteByIdController = async (req, res) => {
     res.send(chosenPalete);
 };
 
-const updatePaleteController = (req, res) => {
+const createPaleteController = async (req, res) => {
     const palete = req.body;
     if (
         !palete ||
@@ -29,15 +29,35 @@ const updatePaleteController = (req, res) => {
                 'Você não preencheu todos os dados para adicionar uma nova paleta ao cardápio!',
         });
     }
-    const paleteUpdated = paleteServices.updatePaleteService(palete);
-    res.send(paleteUpdated);
-};
-
-const createPaleteController = async (req, res) => {
-    const palete = req.body;
     const paleteCreated = await paleteServices.createPaleteService(palete);
 
     res.status(201).send(paleteCreated);
+};
+
+const updatePaleteController = async (req, res) => {
+    const idParam = req.params.id;
+    if (!mongoose.Types.ObjectId.isValid(idParam)) {
+        return res.status(400).send({ message: 'Id invalido!' });
+    }
+
+    const paleteEdited = req.body;
+    if (
+        !paleteEdited ||
+        !paleteEdited.flavor ||
+        !paleteEdited.description ||
+        !paleteEdited.picture ||
+        !paleteEdited.price
+    ) {
+        return res.status(400).send({
+            message:
+                'Você não preencheu todos os dados para adicionar uma nova paleta ao cardápio!',
+        });
+    }
+    const updatedPalete = await paleteServices.updatePaleteService(
+        idParam,
+        paleteEdited,
+    );
+    res.send(updatedPalete);
 };
 
 const deletePaleteController = (req, res) => {

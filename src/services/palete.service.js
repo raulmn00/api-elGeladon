@@ -18,29 +18,9 @@ async function createPaleteService(newPalete) {
     return paleteCreated;
 }
 
-function updatePaleteService(palete) {
-    const updatePaleteService = new PaletesEntity(palete);
-    updatePaleteService.validatePalete();
-    if (!palete.coversAvailable) {
-        throw new Error('Coberturas precisam ser informadas');
-    }
-    const listCovers = [];
-    palete.coversAvailable.map((cover) => {
-        const updatedCover = new CoversAvailableEntity(cover);
-        updatedCover.validateCover();
-        listCovers.push(updatedCover.getCoversAvailable());
-    });
-    const updatedPalete = {
-        ...updatePaleteService.getPalete(),
-        coversAvailable: listCovers,
-    };
-
-    paletes.map((eachPalete, index) => {
-        if (eachPalete.id == updatedPalete.id) {
-            paletes.splice(index, 1, updatedPalete);
-        }
-    });
-    return updatedPalete;
+async function updatePaleteService(id, paleteEdited) {
+    const paleteUpdate = await Palete.findByIdAndUpdate(id, paleteEdited);
+    return paleteUpdate;
 }
 
 function deletePaleteService(id) {
