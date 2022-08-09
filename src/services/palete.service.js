@@ -23,15 +23,8 @@ async function updatePaleteService(id, paleteEdited) {
     return paleteUpdate;
 }
 
-function deletePaleteService(id) {
-    let paleteDeleted;
-    paletes.map((palete, index) => {
-        if (palete.id == id) {
-            paleteDeleted = palete;
-            paletes.splice(index, 1);
-        }
-    });
-    return paleteDeleted;
+async function deletePaleteService(id) {
+    return await Palete.findByIdAndDelete(id);
 }
 
 module.exports = {

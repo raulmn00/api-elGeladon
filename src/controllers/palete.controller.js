@@ -60,10 +60,14 @@ const updatePaleteController = async (req, res) => {
     res.send(updatedPalete);
 };
 
-const deletePaleteController = (req, res) => {
-    const idPalete = req.params.id;
-    const deletedPalete = paleteServices.deletePaleteService(idPalete);
-    res.send(deletedPalete);
+const deletePaleteController = async (req, res) => {
+    const idParam = req.params.id;
+    if (!mongoose.Types.ObjectId.isValid(idParam)) {
+        return res.status(400).send({ message: 'Id invalido!' });
+    }
+
+    await paleteServices.deletePaleteService(idParam);
+    res.send({ message: 'Paleta deletada com sucesso!' });
 };
 
 module.exports = {
