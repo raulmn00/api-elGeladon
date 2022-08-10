@@ -8,8 +8,8 @@ async function findAllPaletesService() {
     return paletes;
 }
 
-async function findPaleteByIdService(id) {
-    const paleteFinded = await Palete.findById(id);
+async function findPaleteByIdService(idParam) {
+    const paleteFinded = await Palete.findById(idParam);
     return paleteFinded;
 }
 
@@ -18,13 +18,13 @@ async function createPaleteService(newPalete) {
     return paleteCreated;
 }
 
-async function updatePaleteService(id, paleteEdited) {
-    const paleteUpdate = await Palete.findByIdAndUpdate(id, paleteEdited);
+async function updatePaleteService(idParam, paleteEdited) {
+    const paleteUpdate = await Palete.findByIdAndUpdate(idParam, paleteEdited);
     return paleteUpdate;
 }
 
-async function deletePaleteService(id) {
-    return await Palete.findByIdAndDelete(id);
+async function deletePaleteService(idParam) {
+    return await Palete.findByIdAndDelete(idParam);
 }
 
 module.exports = {

@@ -2,8 +2,8 @@ const paleteServices = require('../services/palete.service');
 const mongoose = require('mongoose');
 
 const findAllPaletesController = async (req, res) => {
-    const paletes = await paleteServices.findAllPaletesService();
-    res.send(paletes);
+    const allPaletes = await paleteServices.findAllPaletesService();
+    res.send(allPaletes);
 };
 
 const findPaleteByIdController = async (req, res) => {
@@ -53,11 +53,11 @@ const updatePaleteController = async (req, res) => {
                 'Você não preencheu todos os dados para adicionar uma nova paleta ao cardápio!',
         });
     }
-    const updatedPalete = await paleteServices.updatePaleteService(
+    const paleteUpdated = await paleteServices.updatePaleteService(
         idParam,
         paleteEdited,
     );
-    res.send(updatedPalete);
+    res.send(paleteUpdated);
 };
 
 const deletePaleteController = async (req, res) => {
