@@ -3,8 +3,11 @@
     "version": "1.0.0",
     "description": "Projeto do modulo 3, api da paleteria El Geladon",
     "main": "index.js",
+    "engines": {
+        "node": "12.11.1"
+    },
     "scripts": {
-        "start": "node index",
+        "start": "node index.js",
         "dev": "nodemon index"
     },
     "author": "Raul Mariaci Neto",
