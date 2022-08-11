@@ -1,6 +1,5 @@
 require('dotenv').config();
 const express = require('express');
-const paletes = require('../api-elGeladon/src/mocks/paletes');
 const cors = require('cors');
 const Cover = require('./src/entities/CoversAvailable.entity');
 const routes = require('./src/routes/palete.route');
