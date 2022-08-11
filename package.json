@@ -8,7 +8,7 @@
     },
     "scripts": {
         "start": "node index.js",
-        "dev": "nodemon index"
+        "dev": "nodemon index.js"
     },
     "author": "Raul Mariaci Neto",
     "license": "ISC",
