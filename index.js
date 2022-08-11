@@ -8,7 +8,7 @@ const service = require('./src/services/palete.service');
 const controller = require('./src/controllers/palete.controller');
 const connectToDatabase = require('./src/database/database');
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 const app = express();
 
 connectToDatabase();
