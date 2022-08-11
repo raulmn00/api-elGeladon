@@ -8,8 +8,10 @@
         "npm": "8.5.5"
     },
     "scripts": {
-        "start": "node index.js",
-        "dev": "nodemon index.js"
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
     },
     "author": "Raul Mariaci Neto",
     "license": "ISC",
@@ -17,7 +19,8 @@
         "cors": "^2.8.5",
         "dotenv": "^16.0.1",
         "express": "^4.18.1",
-        "mongoose": "^6.5.1"
+        "mongoose": "^6.5.1",
+        "serve": "^14.0.1"
     },
     "devDependencies": {
         "nodemon": "^2.0.19"
