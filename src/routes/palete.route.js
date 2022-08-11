@@ -2,7 +2,7 @@ const route = require('express').Router();
 const controllerPaletes = require('../controllers/palete.controller');
 const { validId, validObjectBody } = require('../middleware/Palete.middleware');
 
-route.get('/all-paletes', controllerPaletes.findAllPaletesController);
+route.get('/', controllerPaletes.findAllPaletesController);
 route.get(
     '/one-palete/:id',
     validId,
