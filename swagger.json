@@ -1,0 +1,229 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API El Geladon",
+        "description": "API RESTFULL para CRUD de paletas mexicanas.",
+        "termsOfService": "",
+        "contact": {
+            "email": "raul.mariaci@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000",
+            "description": "API de testes"
+        },
+        {
+            "url": "https://api-geladon.herokuapp.com/",
+            "description": "API de produção"
+        }
+    ],
+    "paths": {
+        "/": {
+            "get": {
+                "summary": "Lista de todas as paletas",
+                "description": "Rota responsável por listar todas as paletas",
+                "tags": ["Paletas"],
+                "responses": {
+                    "404": {
+                        "description": "Não existe nenhuma paleta cadastrada"
+                    },
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Paletas"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/one-palete/{id}": {
+            "get": {
+                "summary": "Busca uma paleta pelo ID",
+                "description": "Rota responsável por buscar uma paleta pelo ID",
+                "tags": ["Paletas"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da paleta para a busca",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Paletas"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/create-palete": {
+            "post": {
+                "summary": "Cadastrar uma paleta",
+                "description": "Rota responsável por cadastrar uma paleta",
+                "tags": ["Paletas"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Paletas"
+                            },
+                            "examples": {
+                                "Paletas": {
+                                    "value": {
+                                        "flavor": "Maracuja",
+                                        "description": "Quam vulputate dignissim suspendisse in est ante in nibh mauris.",
+                                        "picture": "./assets/images/maracuja.png",
+                                        "price": 4,
+                                        "coversAvailable": [
+                                            {
+                                                "name": "cobertura genérica"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Paletas"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/update-palete/{id}": {
+            "put": {
+                "summary": "Editar uma paleta pelo ID",
+                "description": "Rota responsável por editar uma paleta pelo ID",
+                "tags": ["Paletas"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da paleta para a busca",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Paletas"
+                            },
+                            "examples": {
+                                "Paletas": {
+                                    "value": {
+                                        "flavor": "Maracuja",
+                                        "description": "Quam vulputate dignissim suspendisse in est ante in nibh mauris.",
+                                        "picture": "./assets/images/maracuja.png",
+                                        "price": 4,
+                                        "coversAvailable": [
+                                            {
+                                                "name": "cobertura genérica"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Paletas"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/delete-palete/{id}": {
+            "delete": {
+                "summary": "Apagar uma paleta pelo ID",
+                "description": "Rota responsável por apagar uma paleta pelo ID",
+                "tags": ["Paletas"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da paleta para deleção",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Paletas": {
+                "type": "object",
+                "properties": {
+                    "flavor": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "picture": {
+                        "type": "string"
+                    },
+                    "price": {
+                        "type": "number"
+                    },
+                    "coversAvailable": {
+                        "type": "array"
+                    }
+                }
+            }
+        }
+    }
+}
