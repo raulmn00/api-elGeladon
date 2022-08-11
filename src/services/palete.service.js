@@ -1,30 +1,36 @@
 //const paletes = require('../mocks/paletes');
 const PaletesEntity = require('../entities/Paletes.entity');
 const CoversAvailableEntity = require('../entities/CoversAvailable.entity');
-const Palete = require('../models/Palete');
+const PaleteSchema = require('../models/Palete');
 
 async function findAllPaletesService() {
-    const paletes = await Palete.find();
+    const paletes = await PaleteSchema.find();
+    if (!paletes) {
+        return res.status(400).send({ message: 'Paleta não encontrada!' });
+    }
     return paletes;
 }
 
 async function findPaleteByIdService(idParam) {
-    const paleteFinded = await Palete.findById(idParam);
+    const paleteFinded = await PaleteSchema.findById(idParam);
     return paleteFinded;
 }
 
 async function createPaleteService(newPalete) {
-    const paleteCreated = await Palete.create(newPalete);
+    const paleteCreated = await PaleteSchema.create(newPalete);
     return paleteCreated;
 }
 
 async function updatePaleteService(idParam, paleteEdited) {
-    const paleteUpdate = await Palete.findByIdAndUpdate(idParam, paleteEdited);
+    const paleteUpdate = await PaleteSchema.findByIdAndUpdate(
+        idParam,
+        paleteEdited,
+    );
     return paleteUpdate;
 }
 
 async function deletePaleteService(idParam) {
-    return await Palete.findByIdAndDelete(idParam);
+    return await PaleteSchema.findByIdAndDelete(idParam);
 }
 
 module.exports = {

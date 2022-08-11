@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
-const paletes = require('../mocks/paletes');
+
+const coversAvailableSchema = new mongoose.Schema({
+    name: { type: String, require: true },
+});
 
 const PaleteSchema = new mongoose.Schema({
     flavor: {
@@ -19,7 +22,7 @@ const PaleteSchema = new mongoose.Schema({
         require: true,
     },
     coversAvailable: {
-        type: Object,
+        type: [coversAvailableSchema],
         require: true,
     },
 });
