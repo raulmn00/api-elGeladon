@@ -4,7 +4,8 @@
     "description": "Projeto do modulo 3, api da paleteria El Geladon",
     "main": "index.js",
     "engines": {
-        "node": "12.11.1"
+        "node": "16.15.0",
+        "npm": "8.5.5"
     },
     "scripts": {
         "start": "node index.js",
