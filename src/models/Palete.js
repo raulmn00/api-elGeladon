@@ -1,28 +1,32 @@
 const mongoose = require('mongoose');
 
-const coversAvailableSchema = new mongoose.Schema({
-    name: { type: String, require: true },
-});
-
 const PaleteSchema = new mongoose.Schema({
-    flavor: {
+    titulo: {
         type: String,
         require: true,
     },
-    description: {
+    descricao: {
         type: String,
         require: true,
     },
-    picture: {
+    foto: {
         type: String,
         require: true,
     },
-    price: {
+    preco: {
         type: Number,
         require: true,
     },
-    coversAvailable: {
-        type: [coversAvailableSchema],
+    sabor: {
+        type: String,
+        require: true,
+    },
+    recheio: {
+        type: String,
+        require: true,
+    },
+    possuiRecheio: {
+        type: Boolean,
         require: true,
     },
 });

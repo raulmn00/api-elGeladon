@@ -12,11 +12,13 @@ const validObjectBody = (req, res, next) => {
     const paleteEdited = req.body;
     if (
         !paleteEdited ||
-        !paleteEdited.flavor ||
-        !paleteEdited.description ||
-        !paleteEdited.picture ||
-        !paleteEdited.price ||
-        !paleteEdited.coversAvailable
+        !paleteEdited.titulo ||
+        !paleteEdited.descricao ||
+        !paleteEdited.foto ||
+        !paleteEdited.preco ||
+        !paleteEdited.sabor ||
+        !paleteEdited.recheio ||
+        !paleteEdited.possuiRecheio
     ) {
         return res.status(400).send({
             message:

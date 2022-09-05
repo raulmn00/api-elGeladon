@@ -2,22 +2,34 @@ const crypto = require('crypto');
 class Paletes {
     constructor(palete) {
         this.id = palete.id ? palete.id : crypto.randomUUID();
-        this.flavor = palete.flavor;
-        this.description = palete.description;
-        this.picture = palete.picture;
-        this.price = palete.price;
+        this.titulo = palete.titulo;
+        this.descricao = palete.description;
+        this.foto = palete.foto;
+        this.preco = palete.preco;
+        this.sabor = palete.sabor;
+        this.recheio = palete.recheio;
+        this.possuiRecheio = palete.possuiRecheio;
     }
     validatePalete() {
-        if (!this.flavor) {
+        if (!this.titulo) {
+            throw new Error('Título precisa ser informado!');
+        }
+        if (!this.recheio) {
+            throw new Error('Recheio precisa ser informado!');
+        }
+        if (!this.possuiRecheio) {
+            throw new Error('Possuir Recheio precisa ser informado!');
+        }
+        if (!this.sabor) {
             throw new Error('Sabor precisa ser informado!');
         }
-        if (!this.description) {
+        if (!this.descricao) {
             throw new Error('Descrição precisa ser informado!');
         }
-        if (!this.picture) {
+        if (!this.foto) {
             throw new Error('Foto precisa ser informado!');
         }
-        if (!this.price) {
+        if (!this.preco) {
             throw new Error('Preço precisa ser informado!');
         }
     }
@@ -25,10 +37,13 @@ class Paletes {
     getPalete() {
         return {
             id: this.id,
-            flavor: this.flavor,
-            description: this.description,
-            picture: this.picture,
-            price: this.price,
+            titulo: this.titulo,
+            descricao: this.descricao,
+            foto: this.foto,
+            preco: this.preco,
+            sabor: this.sabor,
+            recheio: this.recheio,
+            possuiRecheio: this.possuiRecheio,
         };
     }
 }
