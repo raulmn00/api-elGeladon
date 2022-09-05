@@ -16,9 +16,7 @@ const validObjectBody = (req, res, next) => {
         !paleteEdited.descricao ||
         !paleteEdited.foto ||
         !paleteEdited.preco ||
-        !paleteEdited.sabor ||
-        !paleteEdited.recheio ||
-        !paleteEdited.possuiRecheio
+        !paleteEdited.sabor
     ) {
         return res.status(400).send({
             message:
