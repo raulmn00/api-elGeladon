@@ -7,7 +7,7 @@ const swaggerDocument = require('../../swagger.json');
 route.use('/api-docs', swaggerUi.serve);
 route.get('/api-docs', swaggerUi.setup(swaggerDocument));
 
-route.get('/', controllerPaletes.findAllPaletesController);
+route.get('/all-paletes', controllerPaletes.findAllPaletesController);
 route.get(
     '/one-palete/:id',
     validId,
