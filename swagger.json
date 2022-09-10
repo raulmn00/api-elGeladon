@@ -20,7 +20,7 @@
         }
     ],
     "paths": {
-        "/": {
+        "/all-paletes": {
             "get": {
                 "summary": "Lista de todas as paletas",
                 "description": "Rota responsável por listar todas as paletas",
