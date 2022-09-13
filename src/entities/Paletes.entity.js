@@ -14,7 +14,7 @@ class Paletes {
         if (!this.titulo) {
             throw new Error('Título precisa ser informado!');
         }
-        if (!this.recheio) {
+        if (!this.recheio && this.possuiRecheio === true) {
             throw new Error('Recheio precisa ser informado!');
         }
         if (!this.possuiRecheio) {
